@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WebpackOnRails</title>
+    <title>Webpack-on-Rails</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'hello_react' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id='root'></div>
+
+    <%= javascript_pack_tag 'index' %>
+    <%= stylesheet_pack_tag 'index' %>
   </body>
 </html>
