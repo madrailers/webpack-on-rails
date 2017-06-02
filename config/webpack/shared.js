@@ -14,7 +14,7 @@ const { env, paths, publicPath, loadersDir } = require('./configuration.js')
 const extensionGlob = `**/*{${paths.extensions.join(',')}}*`
 const packPaths = sync(join(paths.source, paths.entry, extensionGlob))
 
-module.exports = {
+const config = {
   entry: packPaths.reduce(
     (map, entry) => {
       const localMap = map
@@ -52,3 +52,5 @@ module.exports = {
     modules: [paths.node_modules]
   }
 }
+
+module.exports = config;
