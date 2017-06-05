@@ -25,6 +25,7 @@
     "rails-erb-loader": "^5.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-hot-loader": "next",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
     "webpack": "^2.5.1",
@@ -39,7 +40,6 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1",
-    "react-hot-loader": "next",
     "webpack-dev-server": "^2.4.5"
   }
 }
