@@ -1,10 +1,46 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
+import {remove}               from 'lodash';
+
+import TodoForm from './TodoForm';
+import TodoList from './TodoList';
+
 import styles from './App.scss';
 
-const App = () => (
-  <div className={styles.app}>
-    <h2>Hello, Hot-Module Reloading</h2>
-  </div>
-);
+class App extends PureComponent {
+  constructor () {
+    super();
+
+    this.state = {
+      todos: [],
+    };
+
+    this.handleTodoAdd = this.handleTodoAdd.bind(this);
+    this.handleTodoRemove = this.handleTodoRemove.bind(this);
+  }
+
+  handleTodoAdd (todo) {
+    this.setState({todos: [todo, ...this.state.todos]});
+  }
+
+  handleTodoRemove (todo) {
+    const todos = [...this.state.todos];
+    remove(todos, t => t === todo);
+    this.setState({todos});
+  }
+
+  render () {
+    const todos = this.state.todos;
+
+    return (
+      <div className={styles.app}>
+        <h2>My Todo List</h2>
+        <hr />
+        <TodoForm handleTodoAdd={this.handleTodoAdd} />
+        <hr />
+        <TodoList todos={todos} handleTodoRemove={this.handleTodoRemove} />
+      </div>
+    );
+  }
+}
 
 export default App;

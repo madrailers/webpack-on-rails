@@ -6,6 +6,8 @@
   "rules": {
     "no-multi-spaces": 0,
     "object-curly-spacing": 0,
-    "space-before-function-paren": ["error", "always"]
+    "space-before-function-paren": ["error", "always"],
+    "arrow-body-style": 0,
+    "react/no-array-index-key": 0
   }
 }
