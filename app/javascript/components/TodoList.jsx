@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 import Todo from './Todo';
 
+import styles from './TodoList.scss';
+
 class TodoList extends PureComponent {
   render () {
-    const todos = this.props.todos.map((todo, key) => {
+    let todos = this.props.todos.map((todo, key) => {
       return (
         <Todo
           key={key}
@@ -15,8 +17,12 @@ class TodoList extends PureComponent {
       );
     });
 
+    if (todos.length === 0) {
+      todos = [<li className={styles.noTodos}>No todos yet</li>];
+    }
+
     return (
-      <ul>
+      <ul className={styles.todoList}>
         {todos}
       </ul>
     );

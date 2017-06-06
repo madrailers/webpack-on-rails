@@ -1,0 +1,12 @@
+.todo {
+  padding: 10px 10px;
+  border-bottom: 1px dashed #666;
+
+  &:last-child { border-bottom: none; }
+  &:hover { background-color: lightyellow; }
+
+  a {
+    float: right;
+    cursor: pointer;
+  }
+}

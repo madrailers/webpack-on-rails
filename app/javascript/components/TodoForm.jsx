@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './TodoForm.scss';
+
 class TodoForm extends PureComponent {
   constructor (props) {
     super(props);
@@ -28,6 +30,7 @@ class TodoForm extends PureComponent {
     return (
       <form onSubmit={this.handleFormSubmit}>
         <input
+          className={styles.todoInput}
           type="text"
           placeholder="Add todo"
           onChange={this.handleTodoChange}

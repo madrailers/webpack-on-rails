@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './Todo.scss';
+
 class Todo extends PureComponent {
   constructor (props) {
     super(props);
@@ -15,9 +17,9 @@ class Todo extends PureComponent {
 
   render () {
     return (
-      <li>
-        {this.props.todo}
+      <li className={styles.todo}>
         <a role="button" tabIndex="-1" onClick={this.onRemoveClick}>&times;</a>
+        {this.props.todo}
       </li>
     );
   }

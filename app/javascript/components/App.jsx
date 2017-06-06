@@ -34,9 +34,7 @@ class App extends PureComponent {
     return (
       <div className={styles.app}>
         <h2>My Todo List</h2>
-        <hr />
         <TodoForm handleTodoAdd={this.handleTodoAdd} />
-        <hr />
         <TodoList todos={todos} handleTodoRemove={this.handleTodoRemove} />
       </div>
     );
