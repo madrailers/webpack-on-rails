@@ -1,33 +1,60 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
+import PropTypes              from 'prop-types';
 
 import styles from './Todo.scss';
 
-class Todo extends PureComponent {
+class Todo extends Component {
   constructor (props) {
     super(props);
 
     this.onRemoveClick = this.onRemoveClick.bind(this);
+    this.onCompletedToggle = this.onCompletedToggle.bind(this);
+  }
+
+  shouldComponentUpdate () {
+    return true;
   }
 
   onRemoveClick (event) {
     event.preventDefault();
-    this.props.handleTodoRemove(this.props.todo);
+    const {todo} = this.props;
+    this.props.handleTodoRemove(todo.id);
+  }
+
+  onCompletedToggle () {
+    const {todo} = this.props;
+    this.props.handleTodoToggle(todo.id);
   }
 
   render () {
+    const {todo} = this.props;
+    let classes = '';
+    if (todo.completed) {
+      classes = styles.completed;
+    }
+
     return (
       <li className={styles.todo}>
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={this.onCompletedToggle}
+        />
         <a role="button" tabIndex="-1" onClick={this.onRemoveClick}>&times;</a>
-        {this.props.todo}
+        <span className={classes}>{todo.label}</span>
       </li>
     );
   }
 }
 
 Todo.propTypes = {
-  todo: PropTypes.string.isRequired,
+  todo: PropTypes.shape({
+    id: PropTypes.string,
+    label: PropTypes.string,
+    completed: PropTypes.bool,
+  }).isRequired,
   handleTodoRemove: PropTypes.func.isRequired,
+  handleTodoToggle: PropTypes.func.isRequired,
 };
 
 export default Todo;

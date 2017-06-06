@@ -1,24 +1,29 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Todo from './Todo';
 
 import styles from './TodoList.scss';
 
-class TodoList extends PureComponent {
+class TodoList extends Component {
+  shouldComponentUpdate () {
+    return true;
+  }
+
   render () {
-    let todos = this.props.todos.map((todo, key) => {
+    let todos = this.props.todos.map((todo) => {
       return (
         <Todo
-          key={key}
+          key={todo.id}
           todo={todo}
           handleTodoRemove={this.props.handleTodoRemove}
+          handleTodoToggle={this.props.handleTodoToggle}
         />
       );
     });
 
     if (todos.length === 0) {
-      todos = [<li className={styles.noTodos}>No todos yet</li>];
+      todos = [<li key="noTodos" className={styles.noTodos}>No todos yet</li>];
     }
 
     return (
@@ -30,8 +35,13 @@ class TodoList extends PureComponent {
 }
 
 TodoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.string).isRequired,
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    label: PropTypes.string,
+    completed: PropTypes.bool,
+  })).isRequired,
   handleTodoRemove: PropTypes.func.isRequired,
+  handleTodoToggle: PropTypes.func.isRequired,
 };
 
 export default TodoList;

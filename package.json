@@ -29,6 +29,7 @@
     "react-hot-loader": "next",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
+    "uuid": "^3.0.1",
     "webpack": "^2.5.1",
     "webpack-manifest-plugin": "^1.1.0",
     "webpack-merge": "^4.1.0"
